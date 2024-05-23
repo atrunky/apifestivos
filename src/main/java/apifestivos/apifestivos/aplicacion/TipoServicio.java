@@ -44,7 +44,7 @@ public class TipoServicio implements ITipoServicio{
 
     @Override
     public Tipo modificar(Tipo tipo) {
-        Optional<Tipo> tipoEncontrada = repositorio.findById(tipo.getId());
+        Optional<Tipo> tipoEncontrada = repositorio.findAll(tipo.getId());
         return tipoEncontrada.isEmpty() ? null : repositorio.save(tipo);
     }
 

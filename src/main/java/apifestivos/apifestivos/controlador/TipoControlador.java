@@ -12,7 +12,7 @@ import apifestivos.apifestivos.core.dominio.Tipo;
 import apifestivos.apifestivos.core.interfaces.servicios.ITipoServicio;
 
 @RestController
-@RequestMapping("api/tipo")
+@RequestMapping("/tipo")
 public class TipoControlador {
     
     private ITipoServicio servicio;
@@ -25,7 +25,6 @@ public class TipoControlador {
     public List<Tipo> listar(){
         return servicio.listar();
     }
-
 
     @RequestMapping(value = "/obtener/{id}", method = RequestMethod.GET)
     public Tipo obtener(@PathVariable int id) {

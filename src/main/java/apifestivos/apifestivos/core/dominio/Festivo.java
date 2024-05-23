@@ -1,68 +1,28 @@
 package apifestivos.apifestivos.core.dominio;
 
-import org.hibernate.annotations.GenericGenerator;
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "festivo")
+@Table(name = "festivos")
 public class Festivo {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_festivo")
-    @GenericGenerator(name = "secuencia_festivo", strategy = "increment")
-    @Column(name = "id")
-    private int id;
-
-    @Column(name="nombre", length = 100, unique = true)
-    private String nombre;
-
-    @Column(name="dia")
+    private Long id;
     private int dia;
-
-    @Column(name="mes")
     private int mes;
+    private String nombre;
+    private int tipo;
+    private Integer diasPascua; // Puede ser null para tipos que no dependen de Pascua
 
-    @Column(name = "diaspascua", length = 100, nullable = false)
-    private String diaspascua;
+    // Getters y setters
 
-    @ManyToOne
-    @JoinColumn(name="IdTipo", referencedColumnName = "id")
-    private Tipo tipo;
-
-    public Festivo() {
-    }
-
-    public Festivo(int id, String nombre, int dia, int mes, String diaspascua, Tipo tipo) {
-        this.id = id;
-        this.nombre = nombre;
-        this.dia = dia;
-        this.mes = mes;
-        this.diaspascua = diaspascua;
-        this.tipo = tipo;
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public int getDia() {
@@ -81,23 +41,27 @@ public class Festivo {
         this.mes = mes;
     }
 
-    public String getDiaspascua() {
-        return diaspascua;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setDiaspascua(String diaspascua) {
-        this.diaspascua = diaspascua;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public Tipo getTipo() {
+    public int getTipo() {
         return tipo;
     }
 
-    public void setTipo(Tipo tipo) {
+    public void setTipo(int tipo) {
         this.tipo = tipo;
     }
 
+    public Integer getDiasPascua() {
+        return diasPascua;
+    }
 
-
-    
+    public void setDiasPascua(Integer diasPascua) {
+        this.diasPascua = diasPascua;
+    }
 }

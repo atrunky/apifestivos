@@ -1,16 +1,45 @@
 package apifestivos.apifestivos.core.dominio;
 
-import org.hibernate.annotations.GenericGenerator;
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 
 @Entity
+public class Tipo {
+    @Id
+    private Long id;
+    private String nombre;
+    private String modoCalculo;
+
+    // Getters y Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(int i) {
+        this.id = i;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getModoCalculo() {
+        return modoCalculo;
+    }
+
+    public void setModoCalculo(String modoCalculo) {
+        this.modoCalculo = modoCalculo;
+    }
+}
+ 
+
+
+/*
 @Table(name = "tipo")
 public class Tipo {
     
@@ -52,3 +81,4 @@ public class Tipo {
         
 
 }
+*/
